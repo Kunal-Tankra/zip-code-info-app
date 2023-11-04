@@ -12,20 +12,27 @@ const Input = () => {
     const dispatch = useDispatch()
 
     // handle submit btn
-    const handleSubmit = (e)=>{
+    const handleSubmit = (e) => {
         e.preventDefault()
 
-        dispatch(loadingBarAction(10))
+        dispatch(loadingBarAction(10, true))
 
         // calling the api
         fetch(`${process.env.REACT_APP_API_KEY}/${zipCode}`)
-        .then(res=>res.json())
-        .then(data=>{
-            console.log(data)
-        })
-        .catch(err=>{
-            console.log(err, "err")
-        })
+            .then(res => {
+                return res.json()
+            })
+            .then(data => {
+                dispatch(loadingBarAction(100, true))
+                setTimeout(() => {
+                    dispatch(loadingBarAction(100, false))
+                    
+                }, 700);
+                console.log(data)
+            })
+            .catch(err => {
+                console.log(err, "err")
+            })
     }
 
 
@@ -34,7 +41,7 @@ const Input = () => {
             <form onSubmit={handleSubmit} className='col-xl-4 col-md-6 container mb-5' >
 
                 <div>
-                    <input type="number" id="form121" className="form-control" placeholder='Enter the Zip Code...' onChange={(e)=>setZipCode(e.target.value)} required />
+                    <input type="number" id="form121" className="form-control" placeholder='Enter the Zip Code...' onChange={(e) => setZipCode(e.target.value)} required />
                     <label className="form-label" htmlFor="form121">Zip Code</label>
                 </div>
                 <button type='submit' className='btn btn-primary  mt-2' >Submit</button>
