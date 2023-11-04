@@ -8,8 +8,8 @@ function App() {
     <>
       <ProgressBar />
 
-      <div className='container col-xl-8 pt-5'>
-        <h2 className='mb-4 text-center'>Zip Code Info App</h2>
+      <div className='container pt-5'>
+        <h2 className='mb-5 text-center'>Zip Code Info App</h2>
 
         <Input />
         <Info />
