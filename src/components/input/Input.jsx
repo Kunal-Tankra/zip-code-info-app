@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import "./Input.css"
 import { useDispatch } from 'react-redux';
 import { loadingBarAction } from '../../redux/actionCreators/loadingBarAction';
+import { alertAction } from '../../redux/actionCreators/alertAction';
+import axios from 'axios';
 
 const Input = () => {
     // states
@@ -18,20 +20,33 @@ const Input = () => {
         dispatch(loadingBarAction(10, true))
 
         // calling the api
-        fetch(`${process.env.REACT_APP_API_KEY}/${zipCode}`)
-            .then(res => {
-                return res.json()
-            })
+        axios(`${process.env.REACT_APP_API_KEY}/${zipCode}`)
             .then(data => {
+                
+
+                console.log(data, "data")
+
+
+
+            })
+            .catch(err => {
+                console.log(err, "err")
+                // dispatch alert action
+                dispatch(alertAction(true, "Data Not Found."))
+            })
+            .finally(()=>{
+                // loading progress
                 dispatch(loadingBarAction(100, true))
                 setTimeout(() => {
                     dispatch(loadingBarAction(100, false))
                     
                 }, 700);
-                console.log(data)
-            })
-            .catch(err => {
-                console.log(err, "err")
+                
+                // close error
+                setTimeout(() => {
+                    
+                    dispatch(alertAction(false, "Data Not Found."))
+                }, 5000);
             })
     }
 

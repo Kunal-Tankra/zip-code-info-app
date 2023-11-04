@@ -1,6 +1,6 @@
 export const alertAction = (showAlert, msg) => {
     return {
-        type: " UPDATE_ALERT",
+        type: "UPDATE_ALERT",
         payload: {
 
             showAlert,
