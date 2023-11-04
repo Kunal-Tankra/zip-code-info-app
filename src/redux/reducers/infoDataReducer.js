@@ -1,6 +1,6 @@
 const initialState = {
     showData: false,
-    data: []
+    data: {}
 }
 
 export const infoDataReducer = (state=initialState,action)=>{
@@ -8,8 +8,8 @@ export const infoDataReducer = (state=initialState,action)=>{
         case "UPDATE_DATA":
             
             return {
-                showBar: action.payload.showData,
-                amount: action.payload.data
+                showData: action.payload.showData,
+                data: action.payload.data
             }
     
         default:

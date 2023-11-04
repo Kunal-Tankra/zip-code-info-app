@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { loadingBarAction } from '../../redux/actionCreators/loadingBarAction';
 import { alertAction } from '../../redux/actionCreators/alertAction';
 import axios from 'axios';
+import { infoDataAction } from '../../redux/actionCreators/infoDataAction';
 
 const Input = () => {
     // states
@@ -23,8 +24,8 @@ const Input = () => {
         axios(`${process.env.REACT_APP_API_KEY}/${zipCode}`)
             .then(data => {
                 
-
-                console.log(data, "data")
+                // dispatch action for show data
+                dispatch(infoDataAction(true, data.data))
 
                 // show the clear button
                 setShowClearBtn(true)

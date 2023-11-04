@@ -7,19 +7,19 @@ import ProgressBar from './components/progressBar/ProgressBar';
 
 function App() {
   // use selector to get redux store states
-  const {loadingBarProgress, alertStatus} = useSelector(state=>state)
-  console.log(alertStatus, "alert in app")
+  const { loadingBarProgress, alertStatus, infoData } = useSelector(state => state)
 
   return (
     <>
-    {loadingBarProgress.showBar && <ProgressBar/>}
-    {alertStatus.showAlert && <Alert/>}
+      {loadingBarProgress.showBar && <ProgressBar />}
+      {alertStatus.showAlert && <Alert />}
 
       <div className='container pt-5'>
         <h2 className='mb-5 text-center'>Zip Code Info App</h2>
 
         <Input />
-        <Info />
+
+        {infoData.showData && <Info />}
       </div>
     </>
   );
