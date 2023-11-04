@@ -13,6 +13,6 @@ export const loadingBarReducer = (state=initialState,action)=>{
             }
     
         default:
-            return initialState
+            return state
     }
 }

@@ -7,12 +7,14 @@ import ProgressBar from './components/progressBar/ProgressBar';
 
 function App() {
   // use selector to get redux store states
-  const loadingBarProgress = useSelector(state=>state.loadingBarProgress)
+  const {loadingBarProgress, alertStatus} = useSelector(state=>state)
+  console.log(alertStatus)
 
   return (
     <>
     {loadingBarProgress.showBar && <ProgressBar/>}
-      <Alert/>
+    {alertStatus.showAlert && <Alert/>}
+    
       <div className='container pt-5'>
         <h2 className='mb-5 text-center'>Zip Code Info App</h2>
 
