@@ -1,6 +1,9 @@
-export const loadingBarAction = (amount=0)=>{
+export const loadingBarAction = (amount, showBar) => {
     return {
         type: "UPDATE_BAR",
-        payload: `${amount}`
+        payload: {
+            amount,
+            showBar
+        }
     }
 }

@@ -1,14 +1,21 @@
 import React, { useState } from 'react'
 import "./Input.css"
+import { useDispatch } from 'react-redux';
+import { loadingBarAction } from '../../redux/actionCreators/loadingBarAction';
 
 const Input = () => {
     // states
     const [showClearBtn, setShowClearBtn] = useState(false);
     const [zipCode, setZipCode] = useState(null);
 
+    // dispatch method to dispatch any action
+    const dispatch = useDispatch()
+
     // handle submit btn
     const handleSubmit = (e)=>{
         e.preventDefault()
+
+        dispatch(loadingBarAction(10))
 
         // calling the api
         fetch(`${process.env.REACT_APP_API_KEY}/${zipCode}`)

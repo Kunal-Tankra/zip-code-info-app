@@ -8,8 +8,8 @@ export const loadingBarReducer = (state=initialState,action)=>{
         case "UPDATE_BAR":
             
             return {
-                showBar: true,
-                amount: action.payload
+                showBar: action.payload.showBar,
+                amount: action.payload.amount
             }
     
         default:
