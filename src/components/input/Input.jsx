@@ -54,13 +54,21 @@ const Input = () => {
             })
     }
 
+    // handle clear btn
+    const handleClearBtn = (e)=>{
+        e.preventDefault()
+        dispatch(infoDataAction(false, {}))
+        setZipCode("")
+        setShowClearBtn(false)
+    }
+
 
     return (
         <>
             <form onSubmit={handleSubmit} className='col-xl-4 col-md-6 container mb-5' >
 
                 <div>
-                    <input type="number" id="form121" className="form-control" placeholder='Enter the Zip Code...' onChange={(e) => setZipCode(e.target.value)} required />
+                    <input type="number" id="form121" className="form-control" placeholder='Enter the Zip Code...' onChange={(e) => setZipCode(e.target.value)}  value={zipCode}required />
                     <label className="form-label" htmlFor="form121">Zip Code</label>
                 </div>
                 <button type='submit' className='btn btn-primary  mt-2' >Submit</button>
@@ -68,7 +76,7 @@ const Input = () => {
                 {/* show clear button with state */}
                 {showClearBtn &&
 
-                    <button className='btn btn-secondary  mt-2 ms-2' >Clear</button>
+                    <button className='btn btn-secondary  mt-2 ms-2' onClick={handleClearBtn} >Clear</button>
                 }
             </form>
 

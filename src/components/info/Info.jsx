@@ -29,8 +29,8 @@ const Info = () => {
 
                                     </thead>
                                     <tbody className="datatable-body">
-                                       {countryData.places.map(data=>(
-                                        <tr>
+                                       {countryData.places.map((data, idx)=>(
+                                        <tr key={idx}>
                                             <td>{data.place_name? data.place_name : "- -"}</td>
                                             <td>{data.longitude? data.longitude : "- -"}</td>
                                             <td>{data.state? data.state : "- -"}</td>
