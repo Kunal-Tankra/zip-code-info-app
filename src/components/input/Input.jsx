@@ -26,13 +26,21 @@ const Input = () => {
 
                 console.log(data, "data")
 
+                // show the clear button
+                setShowClearBtn(true)
+
 
 
             })
             .catch(err => {
-                console.log(err, "err")
                 // dispatch alert action
                 dispatch(alertAction(true, "Data Not Found."))
+
+                // close error
+                setTimeout(() => {
+                    
+                    dispatch(alertAction(false, "Data Not Found."))
+                }, 5000);
             })
             .finally(()=>{
                 // loading progress
@@ -42,11 +50,6 @@ const Input = () => {
                     
                 }, 700);
                 
-                // close error
-                setTimeout(() => {
-                    
-                    dispatch(alertAction(false, "Data Not Found."))
-                }, 5000);
             })
     }
 
