@@ -10,6 +10,7 @@ const Input = () => {
     // states
     const [showClearBtn, setShowClearBtn] = useState(false);
     const [zipCode, setZipCode] = useState(null);
+    const [isSubmitDisabled, setIsSubmitDisabled] = useState(false);
 
     // dispatch method to dispatch any action
     const dispatch = useDispatch()
@@ -17,6 +18,7 @@ const Input = () => {
     // handle submit btn
     const handleSubmit = (e) => {
         e.preventDefault()
+        setIsSubmitDisabled(true)
 
         dispatch(loadingBarAction(10, true))
 
@@ -50,6 +52,8 @@ const Input = () => {
                     dispatch(loadingBarAction(100, false))
                     
                 }, 700);
+
+                setIsSubmitDisabled(false)
                 
             })
     }
@@ -71,7 +75,7 @@ const Input = () => {
                     <input type="number" id="form121" className="form-control" placeholder='Enter the Zip Code...' onChange={(e) => setZipCode(e.target.value)}  value={zipCode}required />
                     <label className="form-label" htmlFor="form121">Zip Code</label>
                 </div>
-                <button type='submit' className='btn btn-primary  mt-2' >Submit</button>
+                <button type='submit' className='btn btn-primary  mt-2' disabled={isSubmitDisabled} >Submit</button>
 
                 {/* show clear button with state */}
                 {showClearBtn &&
