@@ -65,7 +65,7 @@ const Input = () => {
 
     return (
         <>
-            <form onSubmit={handleSubmit} className='col-xl-4 col-md-6 container mb-5' >
+            <form onSubmit={handleSubmit} className='col-xl-4 col-md-6 container mb-5 border rounded p-3 shadow-4' >
 
                 <div>
                     <input type="number" id="form121" className="form-control" placeholder='Enter the Zip Code...' onChange={(e) => setZipCode(e.target.value)}  value={zipCode}required />
