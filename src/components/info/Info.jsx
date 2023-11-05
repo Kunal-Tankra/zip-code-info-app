@@ -10,7 +10,7 @@ const Info = () => {
 
             <section className="container pb-4 pt-3">
                 <h6>Country:- <strong>{countryData.country}</strong> |
-                    Country Abbreviation:- <strong>{countryData.abbreviation ? countryData.country_abbreviation  : "_ _"}</strong>
+                    Country Abbreviation:- <strong>{Object.values(countryData)[2] ? Object.values(countryData)[2]  : "_ _"}</strong>
                 </h6>
                 <div className="bg-white border rounded-5">
                     <section className="w-100 p-4">
@@ -31,10 +31,10 @@ const Info = () => {
                                     <tbody className="datatable-body">
                                        {countryData.places.map((data, idx)=>(
                                         <tr key={idx}>
-                                            <td>{data.place_name? data.place_name : "- -"}</td>
+                                            <td>{Object.values(data)[0]? Object.values(data)[0] : "- -"}</td>
                                             <td>{data.longitude? data.longitude : "- -"}</td>
                                             <td>{data.state? data.state : "- -"}</td>
-                                            <td>{data.state_abbreviation? data.state_abbreviation : "- -"}</td>
+                                            <td>{Object.values(data)[3]? Object.values(data)[3] : "- -"}</td>
                                             <td>{data.latitude? data.latitude : "- -"}</td>
                                         </tr>
                                        ))}

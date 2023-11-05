@@ -9,7 +9,7 @@ import { infoDataAction } from '../../redux/actionCreators/infoDataAction';
 const Input = () => {
     // states
     const [showClearBtn, setShowClearBtn] = useState(false);
-    const [zipCode, setZipCode] = useState(null);
+    const [zipCode, setZipCode] = useState("");
     const [isSubmitDisabled, setIsSubmitDisabled] = useState(false);
 
     // dispatch method to dispatch any action
